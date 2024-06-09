@@ -8,8 +8,14 @@ if "chat_log" not in st.session_state:
 
 def get_response_from_mojo(user_message, api_key):
     try:
+        # result = subprocess.run(
+        #     ['mojo', 'mojo_backend.mojo', user_message, api_key],
+        #     capture_output=True,
+        #     text=True,
+        #     check=True
+        # )
         result = subprocess.run(
-            ['mojo', 'mojo_backend.mojo', user_message, api_key],
+            ['python', 'py_backend.py', user_message, api_key],
             capture_output=True,
             text=True,
             check=True
