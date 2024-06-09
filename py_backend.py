@@ -1,6 +1,6 @@
 from sys import argv
 import os
-import openai
+from openai import OpenAI
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 base_prompt = '''\n\n
@@ -46,15 +46,10 @@ def generate_response(user_message: str, api_key: str) -> str:
 
 def gpt3(user_message: str, api_key_new: str) -> str:
     try:
-        openai.api_key = api_key_new
-
-        messages = [
-            {"role": "user", "content": user_message + base_prompt}
-        ]
-
-        completion = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=messages
+        client = OpenAI(api_key_new)
+        completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": user_message + base_prompt}]
         )
 
         response = completion.choices[0].message['content']
