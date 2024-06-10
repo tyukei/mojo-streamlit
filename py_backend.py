@@ -1,4 +1,4 @@
-from sys import argv
+import sys
 import os
 from openai import OpenAI
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
@@ -86,8 +86,9 @@ def gpt2(user_message: str) -> str:
 
 def main():
     try:
-        message = argv[1]
-        api_key = argv[2] if len(argv) > 2 else get_openai_key()
+        args = sys.argv
+        message = args[1]
+        api_key = args[2] if len(args) > 2 else get_openai_key()
         response = generate_response(message, api_key)
         print(response)
     except IndexError:
