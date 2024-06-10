@@ -1,5 +1,4 @@
 import sys
-import os
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 from openai import OpenAI
 
