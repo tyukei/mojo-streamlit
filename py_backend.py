@@ -1,7 +1,7 @@
 import sys
 import os
-from openai import OpenAI
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
+from openai import OpenAI
 
 base_prompt = '''\n\n
 ユーザの質問にmojo-manとして答えてください。
