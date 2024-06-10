@@ -30,13 +30,6 @@ base_prompt = '''\n\n
 * 雨が降ったり薪が少なくなり火が弱くなりますが、最終的に復活します。
 '''
 
-def get_openai_key() -> str:
-    try:
-        from dotenv import load_dotenv
-        load_dotenv()
-        return os.getenv('OPENAI_KEY')
-    except Exception as e:
-        return ""
 
 def generate_response(user_message: str, api_key: str) -> str:
     if api_key == "":
@@ -88,7 +81,7 @@ def main():
     try:
         args = sys.argv
         message = args[1]
-        api_key = args[2] if len(args) > 2 else get_openai_key()
+        api_key = args[2]
         response = generate_response(message, api_key)
         print(response)
     except IndexError:
