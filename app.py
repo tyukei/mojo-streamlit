@@ -1,7 +1,6 @@
 import streamlit as st
 import subprocess
-from transformers import GPT2Tokenizer, GPT2LMHeadModel
-from openai import OpenAI
+import sys
 
 img_path = 'img/mojoman.png'
 if "chat_log" not in st.session_state:
@@ -17,7 +16,7 @@ def get_response_from_mojo(user_message, api_key):
         #     check=True
         # )
         result = subprocess.run(
-            ['python', 'py_backend.py', user_message, api_key],
+            [f"{sys.executable}", 'py_backend.py', user_message, api_key],
             capture_output=True,
             text=True,
             check=True
