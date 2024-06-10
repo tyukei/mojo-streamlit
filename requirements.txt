@@ -1,5 +1,5 @@
-openai
-python-dotenv
 streamlit
 transformers
 torch
+openai
+python-dotenv
