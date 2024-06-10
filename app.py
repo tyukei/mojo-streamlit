@@ -1,5 +1,7 @@
 import streamlit as st
 import subprocess
+from transformers import GPT2Tokenizer, GPT2LMHeadModel
+from openai import OpenAI
 
 img_path = 'img/mojoman.png'
 if "chat_log" not in st.session_state:
